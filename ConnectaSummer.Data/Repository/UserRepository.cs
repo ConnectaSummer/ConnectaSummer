@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public class UserRepository : IUser
+    public class UserRepository : IUserRepository
     {
-        ContextSqlServer _context;
+
+        private readonly ContextSqlServer _context;
 
         public UserRepository(ContextSqlServer context)
         {

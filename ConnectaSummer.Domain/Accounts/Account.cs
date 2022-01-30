@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConnectaSummer.Domain.Accounts
 {
@@ -50,7 +47,7 @@ namespace ConnectaSummer.Domain.Accounts
 
         public void AddError(string property, string description)
         {
-            BrokenRoles erro = new BrokenRoles(property, description, TypeValidator.ERROR);
+            BrokenRoles erro = new (property, description, TypeValidator.ERROR);
             Errors.Add(erro);
         }
         public void ReleaseSave()

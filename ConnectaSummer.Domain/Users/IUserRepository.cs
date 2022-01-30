@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Domain.Users
 {
-    public interface IUser
+    public interface IUserRepository
     {
         Task SaveAsync(User user);
         Task UpdateAsync(User user);

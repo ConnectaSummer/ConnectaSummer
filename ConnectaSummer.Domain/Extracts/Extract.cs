@@ -55,7 +55,7 @@ namespace ConnectaSummer.Domain.Extracts
 
         public void AddError(string property, string description)
         {
-            BrokenRoles erro = new BrokenRoles(property, description, TypeValidator.ERROR);
+            BrokenRoles erro = new (property, description, TypeValidator.ERROR);
             Errors.Add(erro);
         }
         public void ReleaseSave()
@@ -78,11 +78,5 @@ namespace ConnectaSummer.Domain.Extracts
             if (Value == 0)
                 AddError(nameof(Value), "Value can not zero");
         }
-    }
-
-    public enum Nature
-    {
-        Credit,
-        Debit
     }
 }

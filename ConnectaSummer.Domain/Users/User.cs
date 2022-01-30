@@ -47,7 +47,7 @@ namespace ConnectaSummer.Domain.Users
 
         public void AddError(string property, string description)
         {
-            BrokenRoles erro = new BrokenRoles(property, description, TypeValidator.ERROR);
+            BrokenRoles erro = new (property, description, TypeValidator.ERROR);
             Errors.Add(erro);
         }
         public void ReleaseSave()
