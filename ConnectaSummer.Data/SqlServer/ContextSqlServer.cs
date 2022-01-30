@@ -3,13 +3,12 @@ using ConnectaSummer.Domain.Accounts;
 using ConnectaSummer.Domain.Extracts;
 using ConnectaSummer.Domain.Users;
 using Microsoft.EntityFrameworkCore;
-using System.Data.Entity;
 
 namespace ConnectaSummer.Data.SqlServer
 {
     public class ContextSqlServer: System.Data.Entity.DbContext
     {
-        public ContextSqlServer(DbContextOptions options) : base(options)
+        public ContextSqlServer(DbContextOptions options) : base()//(options)
         {
 
         }
