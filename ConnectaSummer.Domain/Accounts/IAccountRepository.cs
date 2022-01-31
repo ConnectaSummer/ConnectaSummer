@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Domain.Accounts
 {
-    interface IAccountRepository
+    public interface IAccountRepository
     {
         Task<Account> FindByIdAsync(Guid Id);
     }

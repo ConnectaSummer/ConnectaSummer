@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Domain.AccountHolders
 {
-    interface IAccountHolderRepository
+    public interface IAccountHolderRepository
     {
         Task<AccountHolder> FindByIdAsync(Guid Id);
 
