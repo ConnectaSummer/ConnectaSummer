@@ -6,12 +6,17 @@ namespace ConnectaSummer.Domain.AccountHolders
 {
     public class AccountHolder
     {
+        public AccountHolder()
+        {
+            Errors = new List<BrokenRoles>();
+        }
         public Guid AccountHolderId { get; protected set; }
 
         public AccountHolder(string name, string taxnumber)
         {
             Name = name;            
             TaxNumber = taxnumber;
+            Errors = new List<BrokenRoles>();
         }
 
         public string Name { get; protected set; }

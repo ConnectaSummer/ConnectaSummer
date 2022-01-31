@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConnectaSummer.Application\ConnectaSummer.Application.csproj" />
+    <ProjectReference Include="..\ConnectaSummer.Data\ConnectaSummer.Data.csproj" />
     <ProjectReference Include="..\ConnectaSummer.Domain\ConnectaSummer.Domain.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,6 @@
-﻿using ConnectaSummer.Application.Extracts.Requests;
-using ConnectaSummer.Application.Extracts.Responses;
+﻿using ConnectaSummer.Application.Operation.Requests;
+using ConnectaSummer.Application.Operation.Responses;
+using ConnectaSummer.Domain.Accounts;
 using ConnectaSummer.Domain.Extracts;
 using Data.UnityOfWork;
 using MediatR;
@@ -7,26 +8,30 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConnectaSummer.Application.Extracts.Handlers
+namespace ConnectaSummer.Application.Operation.Handlers
 {
-    public class CreateExtractHandler : IRequestHandler<CreateExtractRequest, CreateExtractResponse>
+    public class DepositHandler : IRequestHandler<DepositRequest, DepositResponse>
     {
-        readonly IExtractRepository _repository;
+       
+        private readonly IExtractRepository _repository;
+        private readonly IAccountRepository _accountRepository;
+
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateExtractHandler(IExtractRepository repository, IUnitOfWork unitOfWork)
+        public DepositHandler(IExtractRepository repository, IUnitOfWork unitOfWork, IAccountRepository accountRepository)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
+            _accountRepository = accountRepository;
         }
 
-        public async Task<CreateExtractResponse> Handle(CreateExtractRequest request, CancellationToken cancellationToken)
+        public async Task<DepositResponse> Handle(DepositRequest request, CancellationToken cancellationToken)
         {
             Extract extract = new Extract(request.AccountId, request.ReleaseDate, request.Value, request.Nature);
             extract.ReleaseSave();
             if (extract.HasErrors)
             {
-                CreateExtractResponse response = new CreateExtractResponse
+                DepositResponse response = new DepositResponse
                 {
                     Erros = extract.Errors,
                     Message = "error for create",
@@ -41,7 +46,7 @@ namespace ConnectaSummer.Application.Extracts.Handlers
                     _unitOfWork.BeginTransaction();
                     await _repository.SaveAsync(extract);
                     _unitOfWork.Commit();
-                    CreateExtractResponse response = new CreateExtractResponse
+                    DepositResponse response = new DepositResponse
                     {
                         Message = "Order saved success",
                         StatusCode = 200
@@ -50,7 +55,7 @@ namespace ConnectaSummer.Application.Extracts.Handlers
                 }
                 catch (Exception ex)
                 {
-                    CreateExtractResponse response = new CreateExtractResponse
+                    DepositResponse response = new DepositResponse
                     {
                         Message = ex.Message,
                         StatusCode = 500

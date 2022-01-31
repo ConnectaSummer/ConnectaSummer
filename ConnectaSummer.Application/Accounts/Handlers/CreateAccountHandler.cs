@@ -1,4 +1,5 @@
-﻿using ConnectaSummer.Application.AccountHolders.Requests;
+﻿using ConnectaSummer.Application.Account.Responses;
+using ConnectaSummer.Application.AccountHolders.Requests;
 using ConnectaSummer.Application.AccountHolders.Responses;
 using ConnectaSummer.Domain.AccountHolders;
 using Data.UnityOfWork;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Application.Account.Handlers
 {
-    public class CreateAccountHandler : IRequestHandler<CreateExtractrRequest, CreateAccountHolderResponse>
+    public class CreateAccountHandler : IRequestHandler<CreateAccountRequest, CreateAccountResponse>
     {
         readonly IAccountHolderRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
@@ -20,13 +21,13 @@ namespace ConnectaSummer.Application.Account.Handlers
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CreateAccountHolderResponse> Handle(CreateExtractrRequest request, CancellationToken cancellationToken)
+        public async Task<CreateAccountResponse> Handle(CreateAccountRequest request, CancellationToken cancellationToken)
         {
             AccountHolder accountHolder = new AccountHolder(request.Name, request.TaxNumber);
             accountHolder.ReleaseSave();
             if (accountHolder.HasErrors)
             {
-                CreateAccountHolderResponse response = new CreateAccountHolderResponse
+                CreateAccountResponse response = new CreateAccountResponse
                 {
                     Erros = accountHolder.Errors,
                     Message = "error for create",
@@ -41,7 +42,7 @@ namespace ConnectaSummer.Application.Account.Handlers
                     _unitOfWork.BeginTransaction();
                     await _repository.SaveAsync(accountHolder);
                     _unitOfWork.Commit();
-                    CreateAccountHolderResponse response = new CreateAccountHolderResponse
+                    CreateAccountResponse response = new CreateAccountResponse
                     {
                         Message = "Order saved success",
                         StatusCode = 200
@@ -50,7 +51,7 @@ namespace ConnectaSummer.Application.Account.Handlers
                 }
                 catch (Exception ex)
                 {
-                    CreateAccountHolderResponse response = new CreateAccountHolderResponse
+                    CreateAccountResponse response = new CreateAccountResponse
                     {
                         Message = ex.Message,
                         StatusCode = 500

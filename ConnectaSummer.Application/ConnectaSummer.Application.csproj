@@ -14,6 +14,7 @@
 	  <Folder Include="AccountHolders\Validations\" />
 	  <Folder Include="Accounts\Validations\" />
 	  <Folder Include="Extracts\Validations\" />
+	  <Folder Include="Operation\Validations\" />
 	</ItemGroup>
 
 	<ItemGroup>
