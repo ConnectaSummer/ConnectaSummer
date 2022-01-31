@@ -7,14 +7,14 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConnectaSummer.Application.AccountHolders.Handlers
+namespace ConnectaSummer.Application.Account.Handlers
 {
-    public class CreateAccountHolderHandler : IRequestHandler<CreateAccountHolderRequest, CreateAccountHolderResponse>
+    public class CreateAccountHandler : IRequestHandler<CreateAccountHolderRequest, CreateAccountHolderResponse>
     {
         readonly IAccountHolderRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateAccountHolderHandler(IAccountHolderRepository repository, IUnitOfWork unitOfWork)
+        public CreateAccountHandler(IAccountHolderRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;

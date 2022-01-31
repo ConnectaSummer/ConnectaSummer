@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Application.AccountHolders.Requests
 {
-    public class UpdateAccountHolderRequest: IRequest<UpdateAccountResponse>
+    public class UpdateAccountRequest: IRequest<UpdateAccountResponse>
     {
         public Guid AccountHolderId { get; protected set; }
 

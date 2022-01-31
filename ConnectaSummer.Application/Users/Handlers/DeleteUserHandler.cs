@@ -14,9 +14,10 @@ namespace ConnectaSummer.Application.Users.Handlers
         readonly IUserRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteUserHandler(IUserRepository repository)
+        public DeleteUserHandler(IUserRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<DeleteUserResponse> Handle(DeleteUserRequest request, CancellationToken cancellationToken)
@@ -50,6 +51,7 @@ namespace ConnectaSummer.Application.Users.Handlers
                 }
                 catch (Exception ex)
                 {
+                    _unitOfWork.Rollback();
                     DeleteUserResponse response = new DeleteUserResponse
                     {
                         Message = ex.Message,

@@ -11,9 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Accounts\Handlers\" />
-	  <Folder Include="Accounts\Requests\" />
-	  <Folder Include="Accounts\Responses\" />
+	  <Folder Include="AccountHolders\Validations\" />
 	  <Folder Include="Accounts\Validations\" />
 	  <Folder Include="Extracts\Handlers\" />
 	  <Folder Include="Extracts\Requests\" />

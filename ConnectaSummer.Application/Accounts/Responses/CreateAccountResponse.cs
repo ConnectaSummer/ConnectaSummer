@@ -1,17 +1,16 @@
 ﻿using ConnectaSummer.Domain;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConnectaSummer.Application.AccountHolders.Responses
+namespace ConnectaSummer.Application.Account.Responses
 {
-    public class UpdateAccountHolderResponse
+    public class CreateAccountResponse
     {
         public int StatusCode { get; set; }
 
         public string Message { get; set; }
+
+        public Guid AccountHolderId { get; set; }
 
         public List<BrokenRoles> Erros { get; set; }
     }

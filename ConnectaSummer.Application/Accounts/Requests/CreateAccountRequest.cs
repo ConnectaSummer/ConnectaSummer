@@ -1,4 +1,5 @@
-﻿using ConnectaSummer.Application.AccountHolders.Responses;
+﻿using ConnectaSummer.Application.Account.Responses;
+using ConnectaSummer.Application.AccountHolders.Responses;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Application.AccountHolders.Requests
 {
-    public class CreateAccountHolderRequest : IRequest<CreateAccountHolderResponse>
+    public class CreateAccountRequest : IRequest<CreateAccountResponse>
     {
         public string Name { get; set; }
 

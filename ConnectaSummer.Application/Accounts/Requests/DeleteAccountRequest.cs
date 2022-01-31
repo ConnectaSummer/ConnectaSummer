@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Application.AccountHolders.Requests
 {
-    public class DeleteAccountHolderRequest
+    public class DeleteAccountRequest
     {
         public Guid AccountHolderId { get; set; }
     }

@@ -11,13 +11,10 @@ namespace ConnectaSummer.Domain.AccountHolders
     {
         public Guid AccountHolderId { get; protected set; }
 
-        public AccountHolder(string name, string taxnumber, bool createCustomer = false, bool updateCustomer = false, bool deleteCustomer = false)
+        public AccountHolder(string name, string taxnumber)
         {
             Name = name;            
             TaxNumber = taxnumber;
-            CreateCustomer = createCustomer;
-            UpdateCustomer = updateCustomer;
-            DeleteCustomer = deleteCustomer;
         }
 
         public string Name { get; protected set; }
@@ -26,11 +23,6 @@ namespace ConnectaSummer.Domain.AccountHolders
 
         public DateTime StartDate { get; protected set; }
 
-        public bool CreateCustomer { get; protected set; }
-
-        public bool UpdateCustomer { get; protected set; }
-
-        public bool DeleteCustomer { get; protected set; }
 
 
         [NotMapped]

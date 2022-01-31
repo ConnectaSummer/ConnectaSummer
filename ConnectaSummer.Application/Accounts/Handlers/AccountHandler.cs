@@ -1,18 +1,19 @@
 ﻿using ConnectaSummer.Application.Account.Requests;
 using ConnectaSummer.Application.Account.Responses;
+using ConnectaSummer.Application.AccountHolders.Requests;
 using ConnectaSummer.Application.AccountHolders.Responses;
 using ConnectaSummer.Domain.AccountHolders;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConnectaSummer.Application.AccountHolders.Handlers
+namespace ConnectaSummer.Application.Account.Handlers
 {
-    public class AccountHolderHandler : IRequestHandler<AccountRequest, AccountResponse>
+    public class AccountHandler : IRequestHandler<AccountRequest, AccountResponse>
     {
         readonly IAccountHolderRepository _repository;
 
-        public AccountHolderHandler(IAccountHolderRepository repository)
+        public AccountHandler(IAccountHolderRepository repository)
         {
             _repository = repository;
         }
