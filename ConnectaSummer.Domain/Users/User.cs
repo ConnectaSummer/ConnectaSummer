@@ -8,13 +8,10 @@ namespace ConnectaSummer.Domain.Users
     {
         public Guid UserId { get; protected set; }
 
-        public User(string login, string pass, bool createHolderAccount = false, bool updateHolderAccount = false, bool deleteHolderAccount = false)
+        public User(string login, string pass)
         {
             Login = login;
             Pass = pass;
-            CreateHolderAccount = createHolderAccount;
-            UpdateHolderAccount = updateHolderAccount;
-            DeleteHolderAccount = deleteHolderAccount;
         }
 
         public string Login { get; protected set; }
@@ -22,12 +19,6 @@ namespace ConnectaSummer.Domain.Users
         public string Pass { get; protected set; }
 
         public DateTime StartDate { get; protected set; }
-
-        public bool CreateHolderAccount { get; protected set; }
-
-        public bool UpdateHolderAccount { get; protected set; }
-
-        public bool DeleteHolderAccount { get; protected set; }
 
 
         [NotMapped]
@@ -57,22 +48,6 @@ namespace ConnectaSummer.Domain.Users
             if (Login.Length < 3)
                 AddError(nameof(Login), "put at least 3 characters");
 
-        }
-        public void ReleaseUpdate()
-        {
-            if (string.IsNullOrEmpty(Login))
-                AddError(nameof(Login), "login can not null");
-
-            if (Login.Length < 3)
-                AddError(nameof(Login), "put at least 3 characters");
-        }
-        public void ReleaseRemove()
-        {
-            if (string.IsNullOrEmpty(Login))
-                AddError(nameof(Login), "login can not null");
-
-            if (Login.Length < 3)
-                AddError(nameof(Login), "put at least 3 characters");
         }
     }
 

@@ -1,6 +1,6 @@
 ﻿namespace ConnectaSummer.Domain.Extracts
 {
-    public enum Nature
+    public enum NatureType
     {
         Credit,
         Debit

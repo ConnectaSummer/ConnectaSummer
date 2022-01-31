@@ -4,6 +4,12 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Operation\Validations\**" />
+    <EmbeddedResource Remove="Operation\Validations\**" />
+    <None Remove="Operation\Validations\**" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="10.3.5" />
 		<PackageReference Include="MediatR" Version="9.0.0" />
@@ -14,7 +20,6 @@
 	  <Folder Include="AccountHolders\Validations\" />
 	  <Folder Include="Accounts\Validations\" />
 	  <Folder Include="Extracts\Validations\" />
-	  <Folder Include="Operation\Validations\" />
 	</ItemGroup>
 
 	<ItemGroup>

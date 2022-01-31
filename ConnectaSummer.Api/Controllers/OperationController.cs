@@ -1,11 +1,8 @@
 ﻿using ConnectaSummer.Application.Operation.Requests;
 using MediatR;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace ConnectaSummer.Api.Controllers
 {
@@ -21,7 +18,7 @@ namespace ConnectaSummer.Api.Controllers
         }
         
         [HttpPost("withdraw")]
-        //[Authorize(Roles = nameof(Domain.Users.User.CreateHolderAccount))] 
+        [Authorize]
         public IActionResult Post([FromBody] WithdrawRequest request)
         {
             var response = _mediator.Send(request).Result;
@@ -29,7 +26,7 @@ namespace ConnectaSummer.Api.Controllers
         }
 
         [HttpPost("deposit")]
-        //[Authorize(Roles = nameof(Domain.Users.User.CreateHolderAccount))] 
+        [Authorize]
         public IActionResult Post([FromBody] DepositRequest request)
         {
             var response = _mediator.Send(request).Result;

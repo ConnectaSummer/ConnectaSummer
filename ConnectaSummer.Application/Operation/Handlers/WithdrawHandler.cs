@@ -8,25 +8,29 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConnectaSummer.Application.Extracts.Handlers
+namespace ConnectaSummer.Application.Operation.Handlers
 {
     public class WithdrawHandler : IRequestHandler<WithdrawRequest, WithdrawResponse>
     {
-        readonly IExtractRepository _repository;
+
+        private readonly IExtractRepository _repository;
         private readonly IAccountRepository _accountRepository;
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public WithdrawHandler(IExtractRepository repository, IUnitOfWork unitOfWork)
+        public WithdrawHandler(IExtractRepository repository, IUnitOfWork unitOfWork, IAccountRepository accountRepository)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
+            _accountRepository = accountRepository;
         }
 
         public async Task<WithdrawResponse> Handle(WithdrawRequest request, CancellationToken cancellationToken)
         {
-            Extract extract = new Extract(request.Agency, request.NumberAccount, request.ReleaseDate, request.Value);
-            extract.ReleaseSave();
+            var account = await _accountRepository.GetByAgencyAndAccountAsync(request.Agency, request.AccountNumber);
+            var extract = new Extract();
+            extract.Withdraw(account, request.Value);
+
             if (extract.HasErrors)
             {
                 WithdrawResponse response = new WithdrawResponse
@@ -43,6 +47,7 @@ namespace ConnectaSummer.Application.Extracts.Handlers
                 {
                     _unitOfWork.BeginTransaction();
                     await _repository.SaveAsync(extract);
+                    await _accountRepository.Update(account);
                     _unitOfWork.Commit();
                     WithdrawResponse response = new WithdrawResponse
                     {

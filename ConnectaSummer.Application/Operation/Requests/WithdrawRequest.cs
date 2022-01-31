@@ -12,9 +12,7 @@ namespace ConnectaSummer.Application.Operation.Requests
     {
         public string Agency { get; set; }
 
-        public string NumberAccount { get; set; }
-
-        public DateTime ReleaseDate { get; set; }
+        public string AccountNumber { get; set; }
 
         public decimal Value { get; set; }
     }

@@ -20,6 +20,7 @@ namespace ConnectaSummer.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Get([FromQuery] AccountRequest request)
         {
             var response = _mediator.Send(request);
@@ -27,22 +28,24 @@ namespace ConnectaSummer.Api.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = nameof(Domain.Users.User.CreateHolderAccount))] 
+        [Authorize] 
         public IActionResult Post([FromBody] CreateAccountRequest request)
         {
             var response = _mediator.Send(request).Result;
             return StatusCode(response.StatusCode, response);
         }
+
         [HttpPut]
-        [Authorize(Roles = nameof(Domain.Users.User.CreateHolderAccount))]
+        [Authorize]
         public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] UpdateAccountRequest request)
         {
             request.SetId(id);
             var response = await _mediator.Send(request);
             return StatusCode(response.StatusCode, response);
         }
+
         [HttpDelete]
-        [Authorize(Roles = nameof(Domain.Users.User.CreateHolderAccount))]
+        [Authorize]
         public IActionResult Remove([FromRoute] Guid id, [FromBody] DeleteAccountRequest request)
         {
             var response = _mediator.Send(request);

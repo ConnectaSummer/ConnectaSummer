@@ -8,14 +8,10 @@ namespace ConnectaSummer.Domain.Accounts
     {
         public Guid AccountId { get; protected set; }
 
-        public Account(string agency, string numberAccount, decimal balance, bool createCustomer = false, bool updateCustomer = false, bool deleteCustomer = false)
+        public Account(string agency, string numberAccount)
         {
             Agency = agency;
             NumberAccount = numberAccount;
-            Balance = balance;
-            CreateCustomer = createCustomer;
-            UpdateCustomer = updateCustomer;
-            DeleteCustomer = deleteCustomer;
         }
 
         public string Agency { get; protected set; }
@@ -26,11 +22,6 @@ namespace ConnectaSummer.Domain.Accounts
 
         public DateTime StartDate { get; protected set; }
 
-        public bool CreateCustomer { get; protected set; }
-
-        public bool UpdateCustomer { get; protected set; }
-
-        public bool DeleteCustomer { get; protected set; }
 
 
         [NotMapped]
@@ -39,6 +30,17 @@ namespace ConnectaSummer.Domain.Accounts
         [NotMapped]
         public Boolean HasErrors => Errors.Count > 0;
 
+        public void Deposit(decimal value)
+        {
+            Balance += value;
+        }
+
+        public void Withdraw(decimal value)
+        {
+            Balance -= value;
+        }
+
+        
         public void SetAgency(string agency, string numberAccount)
         {
             Agency = agency;

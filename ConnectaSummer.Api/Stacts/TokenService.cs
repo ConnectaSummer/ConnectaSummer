@@ -21,18 +21,6 @@ namespace ConnectaSummer.Api.Statcs
 
             List<Claim> listClaims = new List<Claim>();
             listClaims.Add(new Claim(ClaimTypes.Name, user.Login.ToString()));
-            if (user.CreateHolderAccount)
-            {
-                listClaims.Add(new Claim(ClaimTypes.Role, nameof(User.CreateHolderAccount)));
-            }
-            if (user.DeleteHolderAccount)
-            {
-                listClaims.Add(new Claim(ClaimTypes.Role, nameof(User.DeleteHolderAccount)));
-            }
-            if (user.UpdateHolderAccount)
-            {
-                listClaims.Add(new Claim(ClaimTypes.Role, nameof(User.UpdateHolderAccount)));
-            }
 
             var claimIdentity = new ClaimsIdentity(listClaims);
 

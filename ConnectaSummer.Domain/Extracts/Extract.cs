@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConnectaSummer.Domain.Accounts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,24 +9,18 @@ namespace ConnectaSummer.Domain.Extracts
     {
         public Guid ExtractId { get; protected set; }
 
-        public Extract(long accountId, DateTime releaseDate, decimal value, long nature)
-        {
-            AccountId = accountId;
-            ReleaseDate = releaseDate;
-            Value = value;
-            Nature = nature;
-        }
-
-        public long AccountId { get; protected set; }
+        public Guid AccountId { get; protected set; }
 
         public DateTime ReleaseDate { get; protected set; }
 
         public decimal Value { get; protected set; }
 
-        public long Nature { get; protected set; }
+        public NatureType Nature { get; protected set; }
 
         public DateTime StartDate { get; protected set; }
 
+
+        public virtual Account Account { get; protected set; }
 
         [NotMapped]
         public List<BrokenRoles> Errors { get; protected set; }
@@ -33,38 +28,32 @@ namespace ConnectaSummer.Domain.Extracts
         [NotMapped]
         public Boolean HasErrors => Errors.Count > 0;
 
-        public void SetExtract(long accountId, DateTime releaseDate, decimal value, long nature)
+        public void Withdraw(Account account, decimal value)
         {
-            AccountId = accountId;
-            ReleaseDate = releaseDate;
+            if (value > account.Balance)
+            {
+                AddError("Withdraw", "insufficient funds");
+            }
+            AccountId = account.AccountId;
+            ReleaseDate = DateTime.Now;
             Value = value;
-            Nature = nature;
+            Nature = NatureType.Debit;
+            account.Withdraw(value);
+        }
+
+        public void Deposit(Account account, decimal value)
+        {
+            AccountId = account.AccountId;
+            ReleaseDate = DateTime.Now;
+            Value = value;
+            Nature = NatureType.Credit;
+            account.Deposit(value);
         }
 
         public void AddError(string property, string description)
         {
             BrokenRoles erro = new (property, description, TypeValidator.ERROR);
             Errors.Add(erro);
-        }
-        public void ReleaseSave()
-        {
-            StartDate = DateTime.Today;
-
-            ReleaseDate = DateTime.Today;
-
-            if (Value==0)
-                AddError(nameof(Value), "Value can not zero");
-
-        }
-        public void ReleaseUpdate()
-        {
-            if (Value == 0)
-                AddError(nameof(Value), "Value can not zero");
-        }
-        public void ReleaseRemove()
-        {
-            if (Value == 0)
-                AddError(nameof(Value), "Value can not zero");
         }
     }
 }

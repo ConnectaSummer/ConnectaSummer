@@ -1,5 +1,6 @@
 ﻿using ConnectaSummer.Application.Extracts.Requests;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -14,7 +15,9 @@ namespace ConnectaSummer.Api.Controllers
         {
             _mediator = mediator;
         }
+
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Get([FromQuery] ExtractRequest request)
         {
             var response = _mediator.Send(request);

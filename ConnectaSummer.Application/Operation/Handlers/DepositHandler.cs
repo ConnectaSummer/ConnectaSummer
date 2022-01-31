@@ -27,8 +27,10 @@ namespace ConnectaSummer.Application.Operation.Handlers
 
         public async Task<DepositResponse> Handle(DepositRequest request, CancellationToken cancellationToken)
         {
-            Extract extract = new Extract(request.AccountId, request.ReleaseDate, request.Value, request.Nature);
-            extract.ReleaseSave();
+            var account = await _accountRepository.GetByAgencyAndAccountAsync(request.Agency, request.AccountNumber);
+            var extract = new Extract();
+            extract.Deposit(account, request.Value);
+
             if (extract.HasErrors)
             {
                 DepositResponse response = new DepositResponse
@@ -45,6 +47,7 @@ namespace ConnectaSummer.Application.Operation.Handlers
                 {
                     _unitOfWork.BeginTransaction();
                     await _repository.SaveAsync(extract);
+                    await _accountRepository.Update(account);
                     _unitOfWork.Commit();
                     DepositResponse response = new DepositResponse
                     {

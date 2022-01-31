@@ -1,50 +1,31 @@
-﻿using ConnectaSummer.Domain.Accounts;
+﻿using ConnectaSummer.Data.SqlServer;
+using ConnectaSummer.Domain.Accounts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ConnectaSummer.Data.Repository
 {
     public class AccountRepository : IAccountRepository
     {
-        public Task<Account> FindByIdAsync(Guid Id)
+        private readonly ContextSqlServer _context;
+
+        public AccountRepository(ContextSqlServer context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<List<Account>> GetAllAsync(Func<Account, bool> predicate)
+
+        public async Task<Account> GetByAgencyAndAccountAsync(string agency, string accountNumber)
         {
-            throw new NotImplementedException();
+            return _context.Accounts.Where(x => x.Agency == agency && x.NumberAccount == accountNumber).FirstOrDefault();
         }
 
-        public Task<List<Account>> GetAllAsync()
+        public async Task Update(Account account)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Account> GetByIdAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Account>> GetByNameAsync(string Agency, string NumberAccount)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoveAsync(Account account)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SaveAsync(Account account)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(Account account)
-        {
-            throw new NotImplementedException();
+            _context.Accounts.Update(account);
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ConnectaSummer.Application.Users.Handlers
 
         public Task<CreateUserResponse> Handle(CreateUserRequest request, CancellationToken cancellationToken)
         {
-            User user = new (request.Login, request.Pass, request.CreateHolderAccount, request.UpdateHolderAccount, request.DeleteHolderAccount);
+            User user = new (request.Login, request.Pass);
             user.ReleaseSave();
             if (user.HasErrors)
             {
