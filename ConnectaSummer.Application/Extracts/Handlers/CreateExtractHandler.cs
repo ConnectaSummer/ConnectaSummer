@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Application.Extracts.Handlers
 {
-    public class CreateExtractHandler : IRequestHandler<CreateExtractrRequest, CreateExtractResponse>
+    public class CreateExtractHandler : IRequestHandler<CreateExtractRequest, CreateExtractResponse>
     {
         readonly IExtractRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
@@ -22,7 +22,7 @@ namespace ConnectaSummer.Application.Extracts.Handlers
 
         public async Task<CreateExtractResponse> Handle(CreateExtractRequest request, CancellationToken cancellationToken)
         {
-            Extract extract = new Extract(request.Name, request.TaxNumber);
+            Extract extract = new Extract(request.AccountId, request.ReleaseDate, request.Value, request.Nature);
             extract.ReleaseSave();
             if (extract.HasErrors)
             {

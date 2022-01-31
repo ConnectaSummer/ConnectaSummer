@@ -1,7 +1,5 @@
 ﻿using ConnectaSummer.Application.Account.Requests;
 using ConnectaSummer.Application.Account.Responses;
-using ConnectaSummer.Application.AccountHolders.Requests;
-using ConnectaSummer.Application.AccountHolders.Responses;
 using ConnectaSummer.Domain.AccountHolders;
 using MediatR;
 using System.Threading;

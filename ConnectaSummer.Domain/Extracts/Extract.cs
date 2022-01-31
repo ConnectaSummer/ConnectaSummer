@@ -11,15 +11,12 @@ namespace ConnectaSummer.Domain.Extracts
     {
         public Guid ExtractId { get; protected set; }
 
-        public Extract(long accountId, DateTime releaseDate, decimal value, long nature, bool createCustomer = false, bool updateCustomer = false, bool deleteCustomer = false)
+        public Extract(long accountId, DateTime releaseDate, decimal value, long nature)
         {
             AccountId = accountId;
             ReleaseDate = releaseDate;
             Value = value;
             Nature = nature;
-            CreateCustomer = createCustomer;
-            UpdateCustomer = updateCustomer;
-            DeleteCustomer = deleteCustomer;
         }
 
         public long AccountId { get; protected set; }
@@ -31,12 +28,6 @@ namespace ConnectaSummer.Domain.Extracts
         public long Nature { get; protected set; }
 
         public DateTime StartDate { get; protected set; }
-
-        public bool CreateCustomer { get; protected set; }
-
-        public bool UpdateCustomer { get; protected set; }
-
-        public bool DeleteCustomer { get; protected set; }
 
 
         [NotMapped]
