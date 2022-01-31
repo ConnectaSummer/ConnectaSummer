@@ -1,5 +1,4 @@
 ﻿using ConnectaSummer.Application.Login.Responses;
-using ConnectaSummer.Application.Users.Responses;
 using MediatR;
 
 namespace ConnectaSummer.Application.Login.Requests

@@ -46,8 +46,6 @@ namespace ConnectaSummer.Api
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<IAccountHolderRepository, AccountHolderRepository>();
             services.AddTransient<IExtractRepository, ExtractRepository>();
-            // é que no teu projeto, não vi injeção para user
-            //acho que nao tava implementado
             services.AddTransient<IUserRepository, UserRepository>();
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();

@@ -1,5 +1,4 @@
-﻿using ConnectaSummer.Domain.Accounts;
-using ConnectaSummer.Domain.Extracts;
+﻿using ConnectaSummer.Domain.Extracts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

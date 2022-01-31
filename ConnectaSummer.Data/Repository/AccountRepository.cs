@@ -1,7 +1,5 @@
 ﻿using ConnectaSummer.Data.SqlServer;
 using ConnectaSummer.Domain.Accounts;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
