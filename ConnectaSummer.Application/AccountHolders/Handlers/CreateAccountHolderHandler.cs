@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Application.AccountHolders.Handlers
 {
-    public class CreateExtractHandler : IRequestHandler<CreateExtractrRequest, CreateAccountHolderResponse>
+    public class CreateExtractHandler : IRequestHandler<CreateExtractRequest, CreateAccountHolderResponse>
     {
         readonly IAccountHolderRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
@@ -20,7 +20,7 @@ namespace ConnectaSummer.Application.AccountHolders.Handlers
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CreateAccountHolderResponse> Handle(CreateExtractrRequest request, CancellationToken cancellationToken)
+        public async Task<CreateAccountHolderResponse> Handle(CreateExtractRequest request, CancellationToken cancellationToken)
         {
             AccountHolder accountHolder = new AccountHolder(request.Name, request.TaxNumber);
             accountHolder.ReleaseSave();

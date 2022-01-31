@@ -26,7 +26,7 @@ namespace ConnectaSummer.Api.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult Post([FromBody] CreateExtractrRequest request)
+        public IActionResult Post([FromBody] CreateExtractRequest request)
         {
             var response = _mediator.Send(request).Result;
             return StatusCode(response.StatusCode, response);

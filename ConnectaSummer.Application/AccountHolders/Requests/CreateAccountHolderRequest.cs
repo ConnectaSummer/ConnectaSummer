@@ -3,7 +3,7 @@ using MediatR;
 
 namespace ConnectaSummer.Application.AccountHolders.Requests
 {
-    public class CreateExtractrRequest : IRequest<CreateAccountHolderResponse>
+    public class CreateExtractRequest : IRequest<CreateAccountHolderResponse>
     {
         public string Name { get; set; }
 
