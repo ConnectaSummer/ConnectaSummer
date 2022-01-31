@@ -21,5 +21,4 @@ namespace ConnectaSummer.Domain.AccountHolders
 
         Task<List<AccountHolder>> GetByNameAsync(string name, int page, int itensPerPage);
     }
-
 }

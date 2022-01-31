@@ -7,7 +7,9 @@ namespace ConnectaSummer.Domain.Users
     public interface IUserRepository
     {
         Task SaveAsync(User user);
+
         Task UpdateAsync(User user);
+
         Task RemoveAsync(User user);
 
         Task<User> GetByIdAsync(Guid id);

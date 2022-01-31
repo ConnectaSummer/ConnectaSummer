@@ -11,9 +11,7 @@ namespace ConnectaSummer.Data.SqlServer
     {
         public ContextSqlServer(DbContextOptions options) : base(options)
         {
-
         }
-
         public DbSet<AccountHolder> AccountHolders { get; set; }
 
         public DbSet<Account> Accounts { get; set; }
@@ -26,9 +24,7 @@ namespace ConnectaSummer.Data.SqlServer
         {
             new AccountHolderMap().Configure(modelBuilder.Entity<AccountHolder>());
 
-            base.OnModelCreating(modelBuilder); 
-            
+            base.OnModelCreating(modelBuilder);             
         }
-
     }
 }

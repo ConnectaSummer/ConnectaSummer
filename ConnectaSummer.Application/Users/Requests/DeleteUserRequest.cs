@@ -10,7 +10,6 @@ namespace ConnectaSummer.Application.Users.Requests
         {
             UserId = userid;
         }
-
         public Guid UserId { get; private set; }
         public string Login { get; set; }
 

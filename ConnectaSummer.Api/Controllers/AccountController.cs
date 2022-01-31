@@ -1,11 +1,10 @@
-﻿using MediatR;
+﻿using ConnectaSummer.Application.Account.Requests;
+using ConnectaSummer.Application.AccountHolders.Requests;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using ConnectaSummer.Application.AccountHolders.Requests;
-using ConnectaSummer.Domain.Users;
 using System;
-using ConnectaSummer.Application.Account.Requests;
+using System.Threading.Tasks;
 
 namespace ConnectaSummer.Api.Controllers
 {

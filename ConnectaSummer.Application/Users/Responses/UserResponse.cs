@@ -21,6 +21,5 @@ namespace ConnectaSummer.Application.Users.Responses
 
         public int LastPage { get; set; }
 
-
     }
 }

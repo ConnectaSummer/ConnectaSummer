@@ -36,7 +36,6 @@ namespace Data.Repository
         {
             return await Task.FromResult(_context.Users.Where(x => x.Login.Contains(name)).Skip(itensPerPage * (page - 1)).Take(itensPerPage).ToList());
         }
-
       
         public async Task SaveAsync(User user)
         {

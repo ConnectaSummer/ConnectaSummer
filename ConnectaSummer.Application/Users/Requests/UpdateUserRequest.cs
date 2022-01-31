@@ -12,6 +12,7 @@ namespace ConnectaSummer.Application.Users.Requests
         }
 
         public Guid Id { get; private set; }
+
         public string Login { get; set; }
 
         public string Pass { get; set; }
