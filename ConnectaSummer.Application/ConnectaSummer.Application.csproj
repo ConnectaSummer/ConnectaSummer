@@ -13,9 +13,6 @@
 	<ItemGroup>
 	  <Folder Include="AccountHolders\Validations\" />
 	  <Folder Include="Accounts\Validations\" />
-	  <Folder Include="Extracts\Handlers\" />
-	  <Folder Include="Extracts\Requests\" />
-	  <Folder Include="Extracts\Responses\" />
 	  <Folder Include="Extracts\Validations\" />
 	</ItemGroup>
 

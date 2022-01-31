@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Application.AccountHolders.Requests
 {
-    public class CreateAccountHolderRequest : IRequest<CreateAccountHolderResponse>
+    public class CreateExtractrRequest : IRequest<CreateAccountHolderResponse>
     {
         public string Name { get; set; }
 

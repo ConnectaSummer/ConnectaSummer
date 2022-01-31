@@ -26,7 +26,7 @@ namespace ConnectaSummer.Api.Controllers
 
         [HttpPost]
         [Authorize(Roles = nameof(Domain.Users.User.CreateHolderAccount))] 
-        public IActionResult Post([FromBody] CreateAccountHolderRequest request)
+        public IActionResult Post([FromBody] CreateExtractrRequest request)
         {
             var response = _mediator.Send(request).Result;
             return StatusCode(response.StatusCode, response);

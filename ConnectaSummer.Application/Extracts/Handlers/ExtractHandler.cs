@@ -1,13 +1,13 @@
-﻿using ConnectaSummer.Application.Account.Requests;
-using ConnectaSummer.Application.Account.Responses;
+﻿using ConnectaSummer.Application.Extracts.Requests;
+using ConnectaSummer.Application.Extracts.Responses;
 using ConnectaSummer.Domain.AccountHolders;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConnectaSummer.Application.AccountHolders.Handlers
+namespace ConnectaSummer.Application.Extracts.Handlers
 {
-    public class ExtractHandler : IRequestHandler<AccountRequest, AccountResponse>
+    public class ExtractHandler : IRequestHandler<ExtractRequest, ExtractResponse>
     {
         readonly IAccountHolderRepository _repository;
 
@@ -16,7 +16,7 @@ namespace ConnectaSummer.Application.AccountHolders.Handlers
             _repository = repository;
         }
 
-        public Task<AccountResponse> Handle(AccountRequest request, CancellationToken cancellationToken)
+        public Task<ExtractResponse> Handle(ExtractRequest request, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }

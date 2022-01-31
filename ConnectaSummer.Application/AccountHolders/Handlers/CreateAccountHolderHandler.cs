@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Application.AccountHolders.Handlers
 {
-    public class CreateAccountHolderHandler : IRequestHandler<CreateAccountHolderRequest, CreateAccountHolderResponse>
+    public class CreateExtractHandler : IRequestHandler<CreateExtractrRequest, CreateAccountHolderResponse>
     {
         readonly IAccountHolderRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateAccountHolderHandler(IAccountHolderRepository repository, IUnitOfWork unitOfWork)
+        public CreateExtractHandler(IAccountHolderRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CreateAccountHolderResponse> Handle(CreateAccountHolderRequest request, CancellationToken cancellationToken)
+        public async Task<CreateAccountHolderResponse> Handle(CreateExtractrRequest request, CancellationToken cancellationToken)
         {
             AccountHolder accountHolder = new AccountHolder(request.Name, request.TaxNumber);
             accountHolder.ReleaseSave();
