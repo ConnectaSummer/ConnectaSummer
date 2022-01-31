@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConnectaSummer.Domain.Extracts
+namespace ConnectaSummer.Application.AccountHolders.Requests
 {
-    public enum Nature
+    public class DeleteAccountHolderRequest
     {
-        Credit,
-        Debit
     }
 }

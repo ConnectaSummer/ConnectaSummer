@@ -11,13 +11,13 @@ namespace ConnectaSummer.Domain.Users
     {
         public Guid UserId { get; protected set; }
 
-        public User(string login, string pass, bool createCustomer = false, bool updateCustomer = false, bool deleteCustomer = false)
+        public User(string login, string pass, bool createHolderAccount = false, bool updateHolderAccount = false, bool deleteHolderAccount = false)
         {
             Login = login;
             Pass = pass;
-            CreateCustomer = createCustomer;
-            UpdateCustomer = updateCustomer;
-            DeleteCustomer = deleteCustomer;
+            CreateHolderAccount = createHolderAccount;
+            UpdateHolderAccount = updateHolderAccount;
+            DeleteHolderAccount = deleteHolderAccount;
         }
 
         public string Login { get; protected set; }
@@ -26,11 +26,11 @@ namespace ConnectaSummer.Domain.Users
 
         public DateTime StartDate { get; protected set; }
 
-        public bool CreateCustomer { get; protected set; }
+        public bool CreateHolderAccount { get; protected set; }
 
-        public bool UpdateCustomer { get; protected set; }
+        public bool UpdateHolderAccount { get; protected set; }
 
-        public bool DeleteCustomer { get; protected set; }
+        public bool DeleteHolderAccount { get; protected set; }
 
 
         [NotMapped]

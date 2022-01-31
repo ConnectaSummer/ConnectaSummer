@@ -8,6 +8,22 @@
 		<PackageReference Include="FluentValidation" Version="10.3.5" />
 		<PackageReference Include="MediatR" Version="9.0.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Accounts\Handlers\" />
+	  <Folder Include="Accounts\Requests\" />
+	  <Folder Include="Accounts\Responses\" />
+	  <Folder Include="Accounts\Validations\" />
+	  <Folder Include="Extracts\Handlers\" />
+	  <Folder Include="Extracts\Requests\" />
+	  <Folder Include="Extracts\Responses\" />
+	  <Folder Include="Extracts\Validations\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ConnectaSummer.Data\ConnectaSummer.Data.csproj" />
+	  <ProjectReference Include="..\ConnectaSummer.Domain\ConnectaSummer.Domain.csproj" />
 	</ItemGroup>	
 
 </Project>

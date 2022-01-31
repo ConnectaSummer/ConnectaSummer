@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Domain.Extracts
 {
-    public interface IExtract
+    public interface IExtractRepository
     {
         Task SaveAsync(Extract extract);
         Task UpdateAsync(Extract extract);

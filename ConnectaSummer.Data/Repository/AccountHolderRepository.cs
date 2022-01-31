@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConnectaSummer.Domain.Extracts
+namespace ConnectaSummer.Data.Repository
 {
-    public enum Nature
+    class AccountHolderRepository
     {
-        Credit,
-        Debit
     }
 }
