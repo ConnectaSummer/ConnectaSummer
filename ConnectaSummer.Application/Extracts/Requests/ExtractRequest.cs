@@ -5,8 +5,8 @@ namespace ConnectaSummer.Application.Extracts.Requests
 {
     public class ExtractRequest : IRequest<ExtractResponse>
     {
-        public string Name { get; set; }
+        public string Account { get; set; }
 
-        public string TaxNumber { get; set; }
+        public string Agenct { get; set; }
     }
 }

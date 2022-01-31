@@ -27,29 +27,12 @@ namespace ConnectaSummer.Api.Controllers
             return Ok(await Task.FromResult(response));
         }
 
-        [HttpPost]
+        [HttpPost("open-account")]
         [Authorize] 
         public IActionResult Post([FromBody] CreateAccountRequest request)
         {
             var response = _mediator.Send(request).Result;
             return StatusCode(response.StatusCode, response);
-        }
-
-        [HttpPut]
-        [Authorize]
-        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] UpdateAccountRequest request)
-        {
-            request.SetId(id);
-            var response = await _mediator.Send(request);
-            return StatusCode(response.StatusCode, response);
-        }
-
-        [HttpDelete]
-        [Authorize]
-        public IActionResult Remove([FromRoute] Guid id, [FromBody] DeleteAccountRequest request)
-        {
-            var response = _mediator.Send(request);
-            return Ok(Task.FromResult(response));
         }
     }
 }

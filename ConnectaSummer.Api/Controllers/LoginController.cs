@@ -1,12 +1,12 @@
 ﻿using ConnectaSummer.Api.Statcs;
+using ConnectaSummer.Application.Login.Requests;
+using ConnectaSummer.Application.Login.Responses;
 using ConnectaSummer.Application.Users.Requests;
 using ConnectaSummer.Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ConnectaSummer.Api.Controllers
@@ -22,7 +22,7 @@ namespace ConnectaSummer.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpPost("create-user")]
         [Authorize]
         public IActionResult Post(CreateUserRequest request)
         {
@@ -31,20 +31,16 @@ namespace ConnectaSummer.Api.Controllers
         }
 
         [HttpPost]
-        [Route("login")]
-        public IActionResult GenerateToken(string user, string pass)
+        public async Task<IActionResult> GenerateToken(LoginRequest request)
         {
-            return Ok(
-                    new
-                    {
-                        StatusCode = 200,
-                        Token = TokenService.GenerateToken(new User(user, pass)),
-                        User = user,
-                        ExpireDate = DateTime.Now.AddHours(2)
-                    }
-                );
+            LoginResponse response = await _mediator.Send(request);
+            if (response.StatusCode == 200)
+            {
+                response.Token = TokenService.GenerateToken(new User(request.Login, request.Pass));
+                response.Message = "token generated successfully!!!";
+            }
+            return StatusCode(response.StatusCode, response);
         }
-
 
     }
 }

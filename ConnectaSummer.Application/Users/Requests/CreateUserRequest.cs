@@ -8,11 +8,5 @@ namespace ConnectaSummer.Application.Users.Requests
         public string Login { get; set; }
 
         public string Pass { get; set; }
-
-        public bool CreateHolderAccount { get; set; }
-
-        public bool UpdateHolderAccount { get; set; }
-
-        public bool DeleteHolderAccount { get; set; }
     }
 }

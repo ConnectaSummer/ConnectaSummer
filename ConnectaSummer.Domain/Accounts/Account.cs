@@ -40,7 +40,6 @@ namespace ConnectaSummer.Domain.Accounts
             Balance -= value;
         }
 
-        
         public void SetAgency(string agency, string numberAccount)
         {
             Agency = agency;

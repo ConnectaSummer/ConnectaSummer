@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConnectaSummer.Domain.Accounts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,10 +13,11 @@ namespace ConnectaSummer.Domain.AccountHolders
         }
         public Guid AccountHolderId { get; protected set; }
 
-        public AccountHolder(string name, string taxnumber)
+        public AccountHolder(string name, string taxnumber, Account account)
         {
             Name = name;            
             TaxNumber = taxnumber;
+            Account = account;
             Errors = new List<BrokenRoles>();
         }
 
@@ -24,6 +26,10 @@ namespace ConnectaSummer.Domain.AccountHolders
         public string TaxNumber { get; protected set; }
 
         public DateTime StartDate { get; protected set; }
+
+        public Guid AccountId { get; protected set; }
+
+        public virtual Account Account { get; protected set; }
 
 
 

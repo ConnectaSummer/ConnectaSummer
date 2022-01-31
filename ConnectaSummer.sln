@@ -9,15 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectaSummer.Domain", "Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Data", "4-Data", "{003127D6-DB74-42F3-BB18-56029D0B17DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectaSummer.Data", "ConnectaSummer.Data\ConnectaSummer.Data.csproj", "{055D407E-CE59-4EEE-89EB-80486B3DB503}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectaSummer.Data", "ConnectaSummer.Data\ConnectaSummer.Data.csproj", "{055D407E-CE59-4EEE-89EB-80486B3DB503}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentation", "1-Presentation", "{BACD0437-C225-4A4D-9468-7C1FA4B85057}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{100A4BD1-03F3-461B-BA90-95E1A4F96913}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectaSummer.Api", "ConnectaSummer.Api\ConnectaSummer.Api.csproj", "{D0927834-1754-4CCD-AC74-8340880B6887}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectaSummer.Api", "ConnectaSummer.Api\ConnectaSummer.Api.csproj", "{D0927834-1754-4CCD-AC74-8340880B6887}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectaSummer.Application", "ConnectaSummer.Application\ConnectaSummer.Application.csproj", "{F4ABD032-1B1A-4C89-9235-561F4B1175DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectaSummer.Application", "ConnectaSummer.Application\ConnectaSummer.Application.csproj", "{F4ABD032-1B1A-4C89-9235-561F4B1175DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

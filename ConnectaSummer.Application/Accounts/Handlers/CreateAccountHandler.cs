@@ -1,6 +1,5 @@
 ﻿using ConnectaSummer.Application.Account.Responses;
 using ConnectaSummer.Application.AccountHolders.Requests;
-using ConnectaSummer.Application.AccountHolders.Responses;
 using ConnectaSummer.Domain.AccountHolders;
 using Data.UnityOfWork;
 using MediatR;
@@ -23,7 +22,9 @@ namespace ConnectaSummer.Application.Account.Handlers
 
         public async Task<CreateAccountResponse> Handle(CreateAccountRequest request, CancellationToken cancellationToken)
         {
-            AccountHolder accountHolder = new AccountHolder(request.Name, request.TaxNumber);
+            var account = new Domain.Accounts.Account(request.Name, request.TaxNumber);
+            AccountHolder accountHolder = new AccountHolder(request.Name, request.TaxNumber, account);
+
             accountHolder.ReleaseSave();
             if (accountHolder.HasErrors)
             {

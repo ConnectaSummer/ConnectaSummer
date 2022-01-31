@@ -1,4 +1,5 @@
 using ConnectaSummer.Api.Statcs;
+using ConnectaSummer.Application.Account.Requests;
 using ConnectaSummer.Application.AccountHolders.Requests;
 using ConnectaSummer.Application.Users.Handlers;
 using ConnectaSummer.Data.Repository;
@@ -39,7 +40,7 @@ namespace ConnectaSummer.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ConnectaSummer.Api", Version = "v1" });
             });
-            services.AddMediatR(typeof(AccountHolderRequest));
+            services.AddMediatR(typeof(AccountRequest));
 
             services.AddDbContext<ContextSqlServer>(opt => opt.UseSqlServer("name=ConexaoSqlServer:ConnectionString"));
             services.AddTransient<IAccountRepository, AccountRepository>();

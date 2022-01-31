@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Extracts\Validations\**" />
     <Compile Remove="Operation\Validations\**" />
+    <EmbeddedResource Remove="Extracts\Validations\**" />
     <EmbeddedResource Remove="Operation\Validations\**" />
+    <None Remove="Extracts\Validations\**" />
     <None Remove="Operation\Validations\**" />
   </ItemGroup>
 
@@ -17,9 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="AccountHolders\Validations\" />
 	  <Folder Include="Accounts\Validations\" />
-	  <Folder Include="Extracts\Validations\" />
 	</ItemGroup>
 
 	<ItemGroup>

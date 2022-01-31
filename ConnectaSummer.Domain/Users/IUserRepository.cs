@@ -19,5 +19,6 @@ namespace ConnectaSummer.Domain.Users
         Task<List<User>> GetAllAsync();
 
         Task<List<User>> GetByNameAsync(string name, int page, int itensPerPage);
+        Task<User> GetByLoginAndPass(string login, string pass);
     }
 }

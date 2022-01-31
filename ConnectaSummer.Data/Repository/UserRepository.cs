@@ -34,7 +34,7 @@ namespace Data.Repository
 
         public async Task<List<User>> GetByNameAsync(string name, int page, int itensPerPage)
         {
-            return await Task.FromResult(_context.Users.Where(x => x.Login.Contains(name)).Skip(itensPerPage * (page - 1)).Take(itensPerPage).ToList());
+            return _context.Users.Where(x => x.Login.Contains(name)).Skip(itensPerPage * (page - 1)).Take(itensPerPage).ToList();
         }
       
         public async Task SaveAsync(User user)
@@ -52,6 +52,11 @@ namespace Data.Repository
         {
            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<User> GetByLoginAndPass(string login, string pass)
+        {
+            return _context.Users.Where(x=> x.Login == login && x.Pass == pass).FirstOrDefault();
         }
     }
 }

@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace ConnectaSummer.Application.Users.Handlers
 {
-    public class CreateUserHandler : IRequestHandler<CreateUserRequest, CreateUserResponse>
+    public class LoginHandler : IRequestHandler<CreateUserRequest, CreateUserResponse>
     {
         IUserRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateUserHandler(IUserRepository repository, IUnitOfWork unitOfWork)
+        public LoginHandler(IUserRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;

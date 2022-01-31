@@ -24,7 +24,7 @@ namespace ConnectaSummer.Application.Users.Handlers
         {
             User user = await _repository.GetByIdAsync(request.Id);
             user.SetLogin(request.Login, request.Pass);
-            user.ReleaseUpdate();
+            user.ReleaseSave();
             if (user.HasErrors)
             {
                 UpdateUserResponse response = new UpdateUserResponse

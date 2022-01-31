@@ -8,5 +8,9 @@ namespace ConnectaSummer.Application.AccountHolders.Requests
         public string Name { get; set; }
 
         public string TaxNumber { get; set; }
+
+        public string Agency { get; set; }
+
+        public string NumberAccount { get; set; }
     }
 }

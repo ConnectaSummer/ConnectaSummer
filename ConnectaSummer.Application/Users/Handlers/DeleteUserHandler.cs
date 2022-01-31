@@ -23,7 +23,7 @@ namespace ConnectaSummer.Application.Users.Handlers
         public async Task<DeleteUserResponse> Handle(DeleteUserRequest request, CancellationToken cancellationToken)
         {
             User user = await _repository.GetByIdAsync(request.UserId);
-            user.ReleaseRemove ();
+            user.ReleaseSave();
 
             if (user.HasErrors)
             {
