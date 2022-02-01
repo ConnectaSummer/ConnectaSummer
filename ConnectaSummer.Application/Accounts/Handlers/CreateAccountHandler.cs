@@ -45,7 +45,7 @@ namespace ConnectaSummer.Application.Account.Handlers
                     _unitOfWork.Commit();
                     CreateAccountResponse response = new CreateAccountResponse
                     {
-                        Message = "Order saved success",
+                        Message = "Account saved success",
                         StatusCode = 200
                     };
                     return response;

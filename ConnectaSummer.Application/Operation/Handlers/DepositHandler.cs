@@ -51,7 +51,7 @@ namespace ConnectaSummer.Application.Operation.Handlers
                     _unitOfWork.Commit();
                     DepositResponse response = new DepositResponse
                     {
-                        Message = "Order saved success",
+                        Message = "Deposit saved success",
                         StatusCode = 200
                     };
                     return response;

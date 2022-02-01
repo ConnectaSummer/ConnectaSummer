@@ -51,7 +51,7 @@ namespace ConnectaSummer.Application.Operation.Handlers
                     _unitOfWork.Commit();
                     WithdrawResponse response = new WithdrawResponse
                     {
-                        Message = "Order saved success",
+                        Message = "Withdraw saved success",
                         StatusCode = 200
                     };
                     return response;
