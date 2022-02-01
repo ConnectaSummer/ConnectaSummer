@@ -20,7 +20,6 @@
 
 * Message of success when create a movement.
 * Create User.
-* Obs.:Execute Script of master user creation;
 
 ## This features are in developing:
 
@@ -50,4 +49,8 @@
 1) run shell: composer install
 2) create file .env (can copy from .env.example)
 3) configure your database variables in .env
+4) Link from postman collection documentation:
+https://documenter.getpostman.com/view/16692582/UVeDsmyd
+
+> Execute Script of master user creation ⚠️
 
