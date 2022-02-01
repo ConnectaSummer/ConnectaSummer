@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConnectaSummer.Data.Migrations
 {
     [DbContext(typeof(ContextSqlServer))]
-    [Migration("20220131173204_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20220201002558_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,9 @@ namespace ConnectaSummer.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
@@ -38,6 +41,8 @@ namespace ConnectaSummer.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AccountHolderId");
+
+                    b.HasIndex("AccountId");
 
                     b.ToTable("AccountHolders");
                 });
@@ -54,20 +59,11 @@ namespace ConnectaSummer.Data.Migrations
                     b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<bool>("CreateCustomer")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("DeleteCustomer")
-                        .HasColumnType("bit");
-
                     b.Property<string>("NumberAccount")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("UpdateCustomer")
-                        .HasColumnType("bit");
 
                     b.HasKey("AccountId");
 
@@ -80,11 +76,11 @@ namespace ConnectaSummer.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("AccountId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("Nature")
-                        .HasColumnType("bigint");
+                    b.Property<int>("Nature")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
@@ -97,6 +93,8 @@ namespace ConnectaSummer.Data.Migrations
 
                     b.HasKey("ExtractId");
 
+                    b.HasIndex("AccountId");
+
                     b.ToTable("Extracts");
                 });
 
@@ -105,12 +103,6 @@ namespace ConnectaSummer.Data.Migrations
                     b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("CreateHolderAccount")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("DeleteHolderAccount")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Login")
                         .HasColumnType("nvarchar(max)");
@@ -121,12 +113,31 @@ namespace ConnectaSummer.Data.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("UpdateHolderAccount")
-                        .HasColumnType("bit");
-
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ConnectaSummer.Domain.AccountHolders.AccountHolder", b =>
+                {
+                    b.HasOne("ConnectaSummer.Domain.Accounts.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("ConnectaSummer.Domain.Extracts.Extract", b =>
+                {
+                    b.HasOne("ConnectaSummer.Domain.Accounts.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
                 });
 #pragma warning restore 612, 618
         }
