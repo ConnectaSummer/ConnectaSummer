@@ -18,10 +18,9 @@
 
 ## In addition to CRUD, I implement other features such as:
 
-* See the more recently movement created, using Cookie.
-* Entire verification system to validate forms with personalized messages.
-* Message of success when create a movement, using Session Flash.
-* Profile User editable.
+* Message of success when create a movement.
+* Create User.
+* Obs.:Execute Script of master user creation;
 
 ## This features are in developing:
 
