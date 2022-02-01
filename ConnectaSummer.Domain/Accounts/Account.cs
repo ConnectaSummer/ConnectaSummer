@@ -12,6 +12,7 @@ namespace ConnectaSummer.Domain.Accounts
         {
             Agency = agency;
             NumberAccount = numberAccount;
+            Errors = new List<BrokenRoles>();
         }
 
         public string Agency { get; protected set; }
@@ -54,6 +55,7 @@ namespace ConnectaSummer.Domain.Accounts
         public void ReleaseSave()
         {
             StartDate = DateTime.Today;
+            Errors = new List<BrokenRoles>();
 
             if (string.IsNullOrEmpty(Agency))
                 AddError(nameof(Agency), "Agency can not null");

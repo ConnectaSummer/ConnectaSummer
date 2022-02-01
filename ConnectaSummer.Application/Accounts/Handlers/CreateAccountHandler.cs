@@ -22,7 +22,7 @@ namespace ConnectaSummer.Application.Account.Handlers
 
         public async Task<CreateAccountResponse> Handle(CreateAccountRequest request, CancellationToken cancellationToken)
         {
-            var account = new Domain.Accounts.Account(request.Name, request.TaxNumber);
+            var account = new Domain.Accounts.Account(request.Agency, request.NumberAccount);
             AccountHolder accountHolder = new AccountHolder(request.Name, request.TaxNumber, account);
 
             accountHolder.ReleaseSave();

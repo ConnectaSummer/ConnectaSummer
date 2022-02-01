@@ -38,6 +38,7 @@ namespace ConnectaSummer.Domain.Extracts
             ReleaseDate = DateTime.Now;
             Value = value;
             Nature = NatureType.Debit;
+            Errors = new List<BrokenRoles>();
             account.Withdraw(value);
         }
 
@@ -47,6 +48,7 @@ namespace ConnectaSummer.Domain.Extracts
             ReleaseDate = DateTime.Now;
             Value = value;
             Nature = NatureType.Credit;
+            Errors = new List<BrokenRoles>();
             account.Deposit(value);
         }
 

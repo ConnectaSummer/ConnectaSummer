@@ -1,4 +1,5 @@
-﻿using ConnectaSummer.Domain.Extracts;
+﻿using ConnectaSummer.Data.SqlServer;
+using ConnectaSummer.Domain.Extracts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +8,12 @@ namespace ConnectaSummer.Data.Repository
 {
     public class ExtractRepository : IExtractRepository
     {
+        private readonly ContextSqlServer _context;
+
+        public ExtractRepository(ContextSqlServer context)
+        {
+            _context = context;
+        }
         public Task<List<Extract>> GetAllAsync(Func<Extract, bool> predicate)
         {
             throw new NotImplementedException();
@@ -32,9 +39,10 @@ namespace ConnectaSummer.Data.Repository
             throw new NotImplementedException();
         }
 
-        public Task SaveAsync(Extract extract)
+        public async Task SaveAsync(Extract extract)
         {
-            throw new NotImplementedException();
+            await _context.Extracts.AddAsync(extract);
+            await _context.SaveChangesAsync();
         }
 
         public Task UpdateAsync(Extract extract)

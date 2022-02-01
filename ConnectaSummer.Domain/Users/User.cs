@@ -20,7 +20,6 @@ namespace ConnectaSummer.Domain.Users
 
         public DateTime StartDate { get; protected set; }
 
-
         [NotMapped]
         public List<BrokenRoles> Errors { get; protected set; }
 
@@ -41,6 +40,7 @@ namespace ConnectaSummer.Domain.Users
         public void ReleaseSave()
         {
             StartDate = DateTime.Today;
+            Errors = new List<BrokenRoles>();
 
             if (string.IsNullOrEmpty(Login))
                 AddError(nameof(Login), "login can not null");
